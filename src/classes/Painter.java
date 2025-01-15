@@ -3,7 +3,6 @@ import java.io.IOException;
 
 public class Painter {
     public static void main(String[] args) {
-        
         Canvas canvas = new Canvas(256, 256);
         gradientFill(canvas);
         try {
@@ -12,6 +11,7 @@ public class Painter {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        canvas = new Canvas(1024, 1024);
     }
 
     public static void gradientFill(Canvas canvas) { // Fill with raytracing in one weekend first example
@@ -28,4 +28,7 @@ public class Painter {
         }
     }
 
+    public static void sphereFill(Canvas canvas){ // Filling canvas with book spheres example
+        
+    }
 }

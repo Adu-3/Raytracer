@@ -54,4 +54,5 @@ public class Canvas {
         image[height][width][1] = g;
         image[height][width][2] = b;
     }
+
 }
