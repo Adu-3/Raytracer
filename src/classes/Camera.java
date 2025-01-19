@@ -5,14 +5,10 @@ public class Camera {
     private int viewHeight;
     private int ViewWidth;
     // Position
-    private int x;
-    private int y;
-    private int z;
+    private Point3D cordinate;
 
-    public Camera(int x,int y,int z,int viewHeight,int ViewWidth){
-        this.x = x;
-        this.y = y;
-        this.z = z;
+    public Camera(Point3D cordinate ,int viewHeight,int ViewWidth){
+        this.cordinate = cordinate;
         this.viewHeight = viewHeight;
         this.ViewWidth = ViewWidth;
     }
@@ -25,13 +21,7 @@ public class Camera {
         return ViewWidth;
     }
 
-    public int getX(){
-        return x;
-    }
-    public int getY(){
-        return y;
-    }
-    public int getZ(){
-        return z;
+    public Point3D getCordinate(){
+        return cordinate;
     }
 }

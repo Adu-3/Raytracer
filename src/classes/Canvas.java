@@ -22,17 +22,16 @@ public class Canvas {
         return width;
     }
 
-    public void gradientFill() { // Fill with raytracing in one weekend first example
-        for (double fillHeight = 0 ; fillHeight < height ; fillHeight++){
-            for (double fillWidth = 0;  fillWidth < width ; fillWidth++){
-                double r = fillWidth / (width - 1);
-                double g = fillHeight / (height - 1);
-                int ir = (int) Math.round(255.99 * r);
-                int ig = (int) Math.round(255.99 * g);
-                Color color = new Color(ir,ig,0);
-                image[(int) fillHeight][(int) fillWidth] = color;
-                }
+    public boolean putPixel(int x, int y ,Color color){
+        // Translate cordinates to the array
+        int x_cord = Math.round(width/2 + x);
+        int y_cord =Math.round( height/2 + y);
+        // Ensure coordinates are within bounds
+        if (x_cord < 0 || x_cord >= width || y_cord < 0 || y_cord >= height) {
+            return false;
         }
+        image[y_cord][x_cord] = color;
+        return true;
     }
 
     public void exportToPPM(String imageName) throws IOException{ 
@@ -47,15 +46,16 @@ public class Canvas {
         writer.close();
     }
 
-    public boolean putPixel(int x, int y ,Color color){
-        int x_cord = width/2 + x;
-        int y_cord = height/2 + y;
-        image[y_cord][x_cord] = color;
-        return true;
+    public void gradientFill() { // Fill with raytracing in one weekend first example
+        for (double fillHeight = 0 ; fillHeight < height ; fillHeight++){
+            for (double fillWidth = 0;  fillWidth < width ; fillWidth++){
+                double r = fillWidth / (width - 1);
+                double g = fillHeight / (height - 1);
+                int ir = (int) Math.round(254.99 * r);
+                int ig = (int) Math.round(254.99 * g);
+                Color color = new Color(ir,ig,0);
+                image[(int) fillHeight][(int) fillWidth] = color;
+                }
+        }
     }
-
-    // public void CanvasToViewport(x, y) {
-    //     return (x*Vw/Cw, y*Vh/Ch, d)
-    // }
-
 }
