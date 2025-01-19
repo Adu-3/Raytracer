@@ -4,31 +4,33 @@ import java.io.IOException;
 public class Painter {
     public static void main(String[] args) {
         Canvas canvas = new Canvas(256, 256);
-        gradientFill(canvas);
+        canvas.gradientFill();
         try {
             canvas.exportToPPM("gradient");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        canvas = new Canvas(1024, 1024);
+        spherePhoto();
     }
 
-    public static void gradientFill(Canvas canvas) { // Fill with raytracing in one weekend first example
-        int height = canvas.getHeight();
-        int width = canvas.getWidth();
-        for (double fillHeight = 0 ; fillHeight < height ; fillHeight++){
-            for (double fillWidth = 0;  fillWidth < width ; fillWidth++){
-                double r = fillWidth / (width - 1);
-                double g = fillHeight / (height - 1);
-                int ir = (int) Math.round(255.99 * r);
-                int ig = (int) Math.round(255.99 * g);
-                canvas.putPixel((int) fillHeight, (int) fillWidth, ir, ig, 0);
+    public static void spherePhoto(){ // Filling canvas with book spheres example
+        Camera camera = new Camera(0, 0, 0, 1, 1);
+        Canvas canvas = new Canvas(256, 256);
+        for (int x= -canvas.getWidth() / 2; x < (canvas.getWidth() / 2) ; x++){
+            for (int y= -canvas.getHeight() / 2; y < (canvas.getHeight() / 2) ; y++){
+                int D = CanvasToViewport(x, y);
+                int color = TraceRay(O, D, 1, Double.POSITIVE_INFINITY);
+    
             }
         }
     }
 
-    public static void sphereFill(Canvas canvas){ // Filling canvas with book spheres example
-        
+    public static void CanvasToViewport(int x, int y){
+
     }
+
+    public static void CanvasToViewport(int x, int y) {
+        return (x*Vw/Cw, y*Vh/Ch, d)
+        }
 }
